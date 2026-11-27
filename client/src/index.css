@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  color: #172033;
+  background: #f5f7fa;
+  font-optical-sizing: auto;
+  --surface: #ffffff;
+  --surface-muted: #f8fafc;
+  --line: #e6eaf0;
+  --ink: #172033;
+  --muted: #667085;
+}
+
+html, body, #root { min-height: 100%; }
+body { @apply bg-slate-50 text-slate-900 antialiased; margin: 0; }
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled), a[href], input, select, textarea {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+  transition-duration: 160ms;
+  transition-timing-function: cubic-bezier(.2, .75, .25, 1);
+}
+button:not(:disabled) { cursor: pointer; }
+button:not(:disabled):active, a[href]:active { transform: scale(.985); }
+button:disabled { cursor: not-allowed; }
+:focus-visible { outline: 3px solid #85a7ff; outline-offset: 2px; }
+::selection { background: #dce8ff; color: #172033; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb { background: #cbd3df; border: 2px solid transparent; background-clip: padding-box; border-radius: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Liquid glass stays on transient, functional surfaces such as the toolbar and menus. */
+.liquid-glass-surface {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.74), rgba(166, 207, 255, 0.62) 52%, rgba(194, 226, 255, 0.58));
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(22, 74, 137, 0.16), 0 18px 46px rgba(37, 81, 147, 0.25), 0 3px 10px rgba(57, 116, 194, 0.12);
+  -webkit-backdrop-filter: blur(38px) saturate(220%);
+  backdrop-filter: blur(38px) saturate(220%);
+}
+.liquid-glass-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 12% 0%, rgba(255,255,255,1), transparent 48%), linear-gradient(115deg, rgba(255,255,255,.52), transparent 42%, rgba(74,145,229,.24));
+}
+.liquid-glass-tools {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  gap: 0.5rem;
+  border: 1px solid rgba(255,255,255,.98);
+  border-radius: 20px;
+  padding: 6px;
+  background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(157,202,255,.72) 54%, rgba(190,224,255,.7));
+  box-shadow: inset 0 1.5px 0 #fff, inset 0 -1px 0 rgba(55,112,181,.15), 0 16px 34px rgba(38,91,158,.23), 0 3px 9px rgba(38,91,158,.12);
+  -webkit-backdrop-filter: blur(34px) saturate(220%);
+  backdrop-filter: blur(34px) saturate(220%);
+}
+.liquid-glass-tools::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 12% 0%, rgba(255,255,255,1), transparent 45%), linear-gradient(120deg, transparent 25%, rgba(255,255,255,.62) 48%, transparent 68%);
+}
+.liquid-glass-tools > * { position: relative; z-index: 1; }
+.dashboard-shell {
+  background-color: #f5f7fa;
+  background-image: radial-gradient(ellipse 80% 380px at 82% -5%, rgba(89, 162, 244, 0.28), transparent 70%), radial-gradient(ellipse 55% 280px at 8% 0%, rgba(127, 194, 235, 0.18), transparent 72%);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .liquid-glass-surface { background: rgba(255, 255, 255, 0.98); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .liquid-glass-tools { background: rgba(255, 255, 255, 0.98); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .dashboard-shell { background-image: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  button:not(:disabled):active, a[href]:active { transform: none; }
+}

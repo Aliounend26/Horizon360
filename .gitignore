@@ -1,0 +1,23 @@
+# Dependencies and build output
+**/node_modules/
+**/dist/
+**/coverage/
+
+# Local environment and credentials
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+
+# Runtime data and local-only files
+**/uploads/
+**/*.log
+client/tsconfig.tsbuildinfo
+Gestion Vehicules HC.xlsx
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
